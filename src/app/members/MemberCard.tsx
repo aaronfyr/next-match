@@ -15,6 +15,7 @@ type Props = {
 export default function MemberCard({ member, likeIds }: Props) {
 	const hasLiked = likeIds.includes(member.userId);
 
+	// prevent the link action when clicking the like button
 	const preventLinkAction = (e: React.MouseEvent) => {
 		e.preventDefault();
 		e.stopPropagation();
