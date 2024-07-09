@@ -1,6 +1,7 @@
 import { formatShortDateTime } from "./util";
 import { MessageWithSenderRecipient } from "@/types";
 
+// MessageWithSenderRecipient is used here because if it is Message, it will not have the sender and recipient properties as those are not part of the Message type.
 export function mapMessageToMessageDto(message: MessageWithSenderRecipient) {
 	return {
 		id: message.id,

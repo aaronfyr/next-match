@@ -3,6 +3,7 @@ import { ZodIssue } from "zod";
 
 type ActionResult<T> = { status: "success"; data: T } | { status: "error"; error: string | ZodIssue[] };
 
+// MessageWithSenderRecipient is used here because if it is Message, it will not have the sender and recipient properties as those are not part of the Message type.
 type MessageWithSenderRecipient = Prisma.MessageGetPayload<{
 	select: {
 		id: true;
