@@ -3,7 +3,6 @@ import { ZodIssue } from "zod";
 
 type ActionResult<T> = { status: "success"; data: T } | { status: "error"; error: string | ZodIssue[] };
 
-// MessageWithSenderRecipient is used here because if it is Message, it will not have the sender and recipient properties as those are not part of the Message type.
 type MessageWithSenderRecipient = Prisma.MessageGetPayload<{
 	select: {
 		id: true;
@@ -30,4 +29,35 @@ type MessageDto = {
 	recipientId?: string;
 	recipientName?: string;
 	recipientImage?: string | null;
+};
+
+type UserFilters = {
+	ageRange: number[];
+	orderBy: string;
+	gender: string[];
+	withPhoto: boolean;
+};
+
+type PagingParams = {
+	pageNumber: number;
+	pageSize: number;
+};
+
+type PagingResult = {
+	totalPages: number;
+	totalCount: number;
+} & PagingParams;
+
+type PaginatedResponse<T> = {
+	items: T[];
+	totalCount: number;
+};
+
+type GetMemberParams = {
+	ageRange?: string;
+	gender?: string;
+	pageNumber?: string;
+	pageSize?: string;
+	orderBy?: string;
+	withPhoto?: string;
 };
